@@ -1,4 +1,4 @@
-export default class TodoList{
+export default class TaskList{
     constructor(title){
         this.title = title;
         this.todos = [];

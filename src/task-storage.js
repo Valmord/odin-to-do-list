@@ -1,7 +1,7 @@
 import { localStore } from "./local-storage";
-import TodoList from "./todo-list";
+import TaskList from "./tasklist";
 
-export const todoStorage = (function(){
+export const taskStorage = (function(){
     const loadFromLocalStorage = () => {
         return localStore.getLocalStorage();
     }
@@ -17,7 +17,7 @@ export const todoStorage = (function(){
         return arrIndex;
     };
 
-    const addTodo = (listIndex, todo) => {
+    const addTask = (listIndex, todo) => {
         storage[listIndex].todos.push(todo);
         saveToLocalStorage();
     }
@@ -26,11 +26,11 @@ export const todoStorage = (function(){
         return storage.map( (list, index) => ({title: list.title, index})  )
     }
 
-    const getTodos = (index) => {
+    const getTasks = (index) => {
         return storage[index].todos;
     }
 
-    return {addList, addTodo, getLists, getTodos};
+    return {addList, addTask, getLists, getTasks};
 })();
 
 // let obj = {

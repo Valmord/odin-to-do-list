@@ -1,9 +1,9 @@
-import { todoStorage } from "./todo-storage";
+import { taskStorage } from "./task-storage";
 
 export function populateSidebarList(listIndex = 0) {
     const sidebarList = document.querySelector('.list-container');
     sidebarList.textContent = '';
-    const lists = todoStorage.getLists();
+    const lists = taskStorage.getLists();
     lists.forEach( (list, index) => {
         const item = document.createElement('p');
         item.textContent = list.title;
@@ -19,7 +19,9 @@ function listsListeners() {
     const listArr = document.querySelectorAll('.list-container > p');
     listArr.forEach( item => {
         item.addEventListener('click', () => {
-            populateSidebarList(parseInt(item.dataset.index));
+            listArr.forEach( list => list.classList.remove('current-list'));
+            item.classList.add('current-list');
+            // populateSidebarList(parseInt(item.dataset.index));
         })
     })
 }

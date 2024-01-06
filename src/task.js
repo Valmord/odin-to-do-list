@@ -1,8 +1,9 @@
 
-export default class Todo{
-    constructor(title, dueDate, notes = '', tasks = []){
+export default class Task{
+    constructor(title, dueDate = Date.now(), notes = '', tasks = []){
+        console.log(title, dueDate, notes, tasks);
         this.title = title;
-        this.dueDate = Date(dueDate);
+        this.dueDate = dueDate;
         this.notes = notes;
         this.tasks = tasks;
         this.status = 'incomplete';

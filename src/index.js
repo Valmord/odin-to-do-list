@@ -2,9 +2,9 @@ import { populateSidebarList } from './dom-sidebar';
 import { localStore } from './local-storage';
 import { addTaskListeners } from './modal-add-task';
 import './style.css';
-import Todo from './todo-item';
-import TodoList from './todo-list';
-import { todoStorage } from './todo-storage';
+import Task from './task';
+import TaskList from './tasklist';
+import { taskStorage } from './task-storage';
 
 
 
@@ -22,8 +22,8 @@ import { todoStorage } from './todo-storage';
 // [todo1, todo2, todo3].forEach( todo => todoStorage.addTodo(todoIndex, todo));
 
 
-console.dir(todoStorage.getLists()[0].title);
-console.log(todoStorage.getTodos(0));
+console.dir(taskStorage.getLists()[0].title);
+console.log(taskStorage.getTasks(0));
 
 populateSidebarList();
 addTaskListeners();

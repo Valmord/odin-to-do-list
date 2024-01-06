@@ -27,15 +27,16 @@
   <div class="modal-add-task">
     <form action="#" method="get">
       <h1>Add task</h1>
-      <label for="title">Title*</label>
-      <input type="text" name="title" id="title" maxlength="50" required>
-      <label for="due-date">Due Date</label>
-      <input type="datetime" name="due-date" id="due-date">
-      <label for="notes">Task notes</label>
-      <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+      <label for="add-task-title">Title*</label>
+      <input type="text" name="title" id="add-task-title" maxlength="50" required>
+      <label for="add-task-due-date">Due Date</label>
+      <input type="datetime-local" name="due-date" id="add-task-due-date">
+      <label for="add-task-notes">Task notes</label>
+      <textarea name="notes" id="add-task-notes" cols="30" rows="10"></textarea>
       <!-- <label for="tasks">Tasks</label> -->
       <div class="task-btn-container">
         <button type="submit" class="add-task-btn">Save task</button>
+        <button type="button" class="reset-task-btn">Clear</button>
         <button type="button" class="cancel-task-btn">Cancel</button>
       </div>
     </form>
