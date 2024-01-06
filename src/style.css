@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    font-family: Roboto, sans-serif;
+
+    --sidebar-gray: #f1f5f9;
+    --border-gray: #e4e4e7;
+    --hover-color: red;
+}
+
+body {
+    display: flex;
+    font-size: 1.5rem;
+
+    & .sidebar {
+        width: 200px;
+        height: 100vh;
+        background-color: var(--sidebar-gray);
+        border-right: 2px solid var(--border-gray);
+    }
+
+    & main {
+        flex: 1 1 300px;
+    }
+}
+
+.sidebar {
+    padding: 10px;
+    display: grid;
+    row-gap: 30px;
+    grid-template-rows: max-content max-content 1fr;
+    align-content: start;
+
+    & h3 {
+        margin-bottom: 5px;
+        color: #1e293b;
+        font-weight: bold;
+    }
+
+
+    & p {
+        color: #475569;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    & p:hover {
+        color: var(--hover-color);
+    }
+
+    & img {
+        height: auto;
+        width: 30px;
+    }
+}
+
+.list-container > p {
+    margin-left: 30px;
+}
+
+.current-list {
+    font-weight: bold;
+}
+
+.current-list::before {
+    position: absolute;
+    content: '';
+    background-image: url('../dist/images/arrow-right-thin.svg');   
+    height: 30px;
+    width: 30px;
+    left: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    height: 30px;
+    font-size: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.modal-add-task {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.2);
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+
+    & form {
+        position: relative;
+        top: 10%;
+        height: fit-content;
+        width: 300px;
+        padding: 20px;
+        border: 2px solid var(--border-gray);
+        background-color: var(--sidebar-gray);
+        border-radius: 10px;
+        display: grid;
+        grid-auto-rows: max-content;
+        gap: 3px;
+
+        & h1 {
+            text-decoration: underline;
+            text-decoration-color: #475569;
+        }
+
+        & label {   
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        & textarea, input {
+            resize: none;
+            padding: 2px 5px;
+        }
+    }
+
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-shown {
+    display: flex;
+}
+
+.task-btn-container {
+    display: flex;
+    justify-content: space-between;
+    
+    & button {
+        padding: 5px 10px;
+    }
+}

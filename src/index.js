@@ -1,4 +1,6 @@
+import { populateSidebarList } from './dom-sidebar';
 import { localStore } from './local-storage';
+import { addTaskListeners } from './modal-add-task';
 import './style.css';
 import Todo from './todo-item';
 import TodoList from './todo-list';
@@ -22,6 +24,9 @@ import { todoStorage } from './todo-storage';
 
 console.dir(todoStorage.getLists()[0].title);
 console.log(todoStorage.getTodos(0));
+
+populateSidebarList();
+addTaskListeners();
 
 // todoStorage.saveToLocalStorage();    
 
