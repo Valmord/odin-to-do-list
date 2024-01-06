@@ -1,10 +1,12 @@
 import { populateSidebarList } from './dom-sidebar';
 import { localStore } from './local-storage';
 import { addTaskListeners } from './modal-add-task';
-import './style.css';
+import './sidebar.css';
+import './main.css';
 import Task from './task';
 import TaskList from './tasklist';
 import { taskStorage } from './task-storage';
+import { displayNoTasks, showTaskItems } from './dom-page';
 
 
 
@@ -22,11 +24,20 @@ import { taskStorage } from './task-storage';
 // [todo1, todo2, todo3].forEach( todo => todoStorage.addTodo(todoIndex, todo));
 
 
-console.dir(taskStorage.getLists()[0].title);
-console.log(taskStorage.getTasks(0));
+// console.dir(taskStorage.getLists()[0].title);
+// console.log(taskStorage.getTasks(0));
 
 populateSidebarList();
 addTaskListeners();
+
+
+const currentIndex = document.querySelector('.current-list')?.dataset.index;
+if (currentIndex) {
+    showTaskItems(currentIndex);
+} else {
+    displayNoTasks();
+}
+
 
 // todoStorage.saveToLocalStorage();    
 
