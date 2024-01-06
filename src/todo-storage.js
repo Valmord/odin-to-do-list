@@ -1,14 +1,25 @@
+import { localStore } from "./local-storage";
 import TodoList from "./todo-list";
 
 export const todoStorage = (function(){
-    const storage = [];
+    const loadFromLocalStorage = () => {
+        return localStore.getLocalStorage();
+    }
+    const storage = loadFromLocalStorage();
+
+    const saveToLocalStorage = () => {
+        localStore.setLocalStorage(storage);
+    }
 
     const addList = (list) => {
-        return storage.push(list) - 1; //Array Index
+        const arrIndex = storage.push(list) - 1; //Array Index is length - 1
+        saveToLocalStorage();
+        return arrIndex;
     };
 
     const addTodo = (listIndex, todo) => {
         storage[listIndex].todos.push(todo);
+        saveToLocalStorage();
     }
 
     const getLists = () => {
