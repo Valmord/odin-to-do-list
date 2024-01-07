@@ -7,6 +7,7 @@ import Task from './task';
 import TaskList from './tasklist';
 import { taskStorage } from './task-storage';
 import { displayNoTasks, showTaskItems } from './dom-page';
+import { addListListeners } from './modal-add-list';
 
 
 
@@ -29,8 +30,10 @@ import { displayNoTasks, showTaskItems } from './dom-page';
 
 populateSidebarList();
 addTaskListeners();
+addListListeners();
 
 
+// need to rewrite this being that it will fail if no lists, but should fail if no tasks
 const currentIndex = document.querySelector('.current-list')?.dataset.index;
 if (currentIndex) {
     showTaskItems(currentIndex);

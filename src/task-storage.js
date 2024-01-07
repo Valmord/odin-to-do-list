@@ -30,6 +30,10 @@ export const taskStorage = (function(){
         return storage[index].todos;
     }
 
+    const checkIfAnyLists = () => {
+        
+    }
+
     return {addList, addTask, getLists, getTasks};
 })();
 

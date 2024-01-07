@@ -65,6 +65,21 @@ body {
     }
 }
 
+.sidebar h3 {
+    position: relative;
+    & img {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        opacity: 0.2;
+        margin-left: 2px;
+        cursor: pointer;
+    }
+    & img:hover {
+        opacity: 1;
+    }
+}
+
 .list-container > p {
     margin-left: 30px;
 }
@@ -95,7 +110,7 @@ body {
 }
 
 
-.modal-add-task {
+.modal-add-task, .modal-add-list {
     height: 100%;
     width: 100%;
     background-color: rgb(0, 0, 0, 0.25);
@@ -134,7 +149,11 @@ body {
         }
     }
 
-}
+}   
+/* 
+.modal-add-list {
+    display: flex;
+} */
 
 .hidden {
     display: none;
@@ -144,7 +163,8 @@ body {
     display: flex;
 }
 
-.task-btn-container {
+.btn-container {
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
     

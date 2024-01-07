@@ -10,9 +10,11 @@ export function populateSidebarList(listIndex = 0) {
         item.dataset.index = index;
         if (index === listIndex) item.classList.add('current-list');
         sidebarList.appendChild(item);
-        listsListeners();
-        addTaskListener();
     })
+
+    listsListeners();
+    addTaskListener();
+    addListListener();
 }
 
 function listsListeners() {
@@ -21,7 +23,6 @@ function listsListeners() {
         item.addEventListener('click', () => {
             listArr.forEach( list => list.classList.remove('current-list'));
             item.classList.add('current-list');
-            // populateSidebarList(parseInt(item.dataset.index));
         })
     })
 }
@@ -29,8 +30,15 @@ function listsListeners() {
 function addTaskListener(){
     const taskElement = document.querySelector('.add-task');
     const addTaskModal = document.querySelector('.modal-add-task');
-    console.log(taskElement, addTaskModal);
     taskElement.addEventListener('click', () => {
         addTaskModal.classList.add('modal-shown');
+    })
+}
+
+function addListListener(){
+    const newListBtn = document.querySelector('.new-list');
+    const addListModal = document.querySelector('.modal-add-list');
+    newListBtn.addEventListener('click', () => {
+        addListModal.classList.add('modal-shown');
     })
 }

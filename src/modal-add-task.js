@@ -1,21 +1,17 @@
 import Task from "./task";
 import { taskStorage } from "./task-storage";
 
+export function addTaskListeners(){
+    resetBtnListener();
+    cancelBtnListener();
+    outsideFormListener();
+    formSubmitListener();
+}
+
 const resetBtn = document.querySelector('.reset-task-btn')
 const cancelBtn = document.querySelector('.cancel-task-btn');
 const modal = document.querySelector('.modal-add-task');
 const form = document.querySelector('.modal-add-task > form');
-
-export function addTaskListeners(){
-    resetBtnListener();
-    cancelBtnListener();
-    outsideOfFormListener();
-    formSubmitListener();
-
-
-
-
-}
 
 const formSubmitListener = () => {
     const title = document.querySelector('#add-task-title');
@@ -29,7 +25,7 @@ const formSubmitListener = () => {
     })
 }
 
-const outsideOfFormListener = () => {
+const outsideFormListener = () => {
     modal.addEventListener('click', e => {
         if (e.target === modal) modal.classList.remove('modal-shown');
     })
