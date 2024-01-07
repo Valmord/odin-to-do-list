@@ -1,5 +1,6 @@
-import { displayListItems } from "./dom-display";
+import { displayListItems, displayNewTaskPart } from "./dom-display";
 import Task from "./task";
+import { removeLastTaskPart, resetTaskParts } from "./task-parts";
 import { taskStorage } from "./task-storage";
 
 export function addTaskListeners(){
@@ -7,6 +8,7 @@ export function addTaskListeners(){
     cancelBtnListener();
     outsideFormListener();
     formSubmitListener();
+    taskPartListeners();
 }
 
 const resetBtn = document.querySelector('.reset-task-btn')
@@ -19,11 +21,17 @@ const formSubmitListener = () => {
     const dueDate = document.querySelector('#add-task-due-date');
     const notes = document.querySelector('#add-task-notes'); 
     form.addEventListener('submit', e => {
-        const currentList = document.querySelector('.current-list');
         e.preventDefault();
-        taskStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value));
+        const currentList = document.querySelector('.current-list');
+        let partsArray = [];
+        document.querySelectorAll('.task-parts').forEach(part => {
+            if (part.value != '') partsArray.push(part.value);
+        } );
+        console.log(partsArray);
+        taskStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray));
         form.reset();
-        displayListItems.showPage(currentList.dataset.index);
+        resetTaskParts();
+        displayListItems.showPage(+currentList.dataset.index);
     })
 }
 
@@ -41,5 +49,29 @@ const cancelBtnListener = () => {
 }
 
 const resetBtnListener = () => {
-    resetBtn.addEventListener('click', form.reset());
+    resetBtn.addEventListener('click', () => {
+        form.reset()
+        resetTaskParts();
+    });
+}
+
+export const taskPartListeners = () => {
+    let parts = document.querySelectorAll('.task-parts');
+    parts.forEach( part => {
+        part.addEventListener('input', () => {
+            if (part.value) part.classList.remove('part-empty');
+            parts = document.querySelectorAll('.task-parts');   
+            if (parts.length === parseInt(part.dataset.index)) {
+                displayNewTaskPart();
+                taskPartListeners();
+            }
+        })
+        part.addEventListener('change', () => {
+            parts = document.querySelectorAll('.task-parts');
+            if (part.value === '' && parseInt(part.dataset.index)+1 === parts.length) {
+                removeLastTaskPart();
+                part.classList.add('part-empty')
+            }
+        })
+    })
 }

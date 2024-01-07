@@ -1,5 +1,6 @@
 import { taskGridItem } from "./dom-task-items";
 import { taskStorage } from "./task-storage";
+import { createNewTaskPart } from "./task-parts";
 
 export const displayListItems = (() => {
     function showPage(listIndex = 0 ){
@@ -52,4 +53,9 @@ export function displaySidebarLists(listIndex = 0) {
         if (index === listIndex) item.classList.add('current-list');
         sidebarList.appendChild(item);
     })
+}
+
+export const displayNewTaskPart = () => {
+    const partsContainer = document.querySelector('.task-parts-container');
+    partsContainer.appendChild(createNewTaskPart());
 }

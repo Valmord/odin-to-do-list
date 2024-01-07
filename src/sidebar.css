@@ -123,7 +123,7 @@ body {
 
     & form {
         position: relative;
-        top: 10%;
+        top: 6%;
         height: fit-content;
         width: 300px;
         padding: 20px;
@@ -165,11 +165,34 @@ body {
 }
 
 .btn-container {
-    margin-top: 15px;
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
     
     & button {
         padding: 5px 10px;
     }
+}
+
+.task-parts-container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.task-parts {
+    width: 90%;
+    margin-left: 10%;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid black;
+}
+
+.task-parts.part-empty {
+    border-color: lightgray;
+}
+
+.task-parts:focus, .task-parts:hover {
+    border-color: black;
 }
