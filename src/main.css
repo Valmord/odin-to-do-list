@@ -16,7 +16,27 @@
     --sidebar-width: 200px;
 }
 
+main > h1 {
+    margin-left: 20px;
+    margin-top: 10px;
+}
 
 .no-items {
     margin: 40px 0 0 40px;
+}
+
+.tasks-container {
+    display: grid;
+    padding: 50px;
+    gap: 20px;
+}
+
+.task-item {
+    padding: 10px;
+    border: 2px solid var(--border-gray);
+    border-radius: 10px;
+}
+
+.task-item:hover {
+    background-color: #f1f5f9;
 }

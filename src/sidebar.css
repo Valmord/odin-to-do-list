@@ -65,7 +65,7 @@ body {
     }
 }
 
-.sidebar h3 {
+.user-lists > h3 {
     position: relative;
     & img {
         position: absolute;
