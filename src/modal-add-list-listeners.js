@@ -1,5 +1,6 @@
 import { displayListItems, displaySidebarLists } from "./dom-display";
 import { sidebarListeners } from "./dom-sidebar-listeners";
+import { loadSite } from "./load-site";
 import { siteStorage } from "./storage";
 import TaskList from "./tasklist";
 
@@ -28,10 +29,7 @@ const formSubmitListener = () => {
         const newListIndex = siteStorage.addList(new TaskList(title.value));
         modal.classList.remove('modal-shown');
         form.reset();
-        
-        displaySidebarLists(newListIndex);
-        displayListItems.showPage(newListIndex);
-        sidebarListeners.changingListListeners();
+        loadSite.refreshPage(newListIndex);
     })
 }
 

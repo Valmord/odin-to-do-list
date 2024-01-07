@@ -5,16 +5,20 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+/* 
 :root {
     font-size: 62.5%;
     font-family: Roboto, sans-serif;
+    background-color: #f0f9ff;
 
-    --sidebar-gray: #f1f5f9;
-    --border-gray: #e4e4e7;
+    --sidebar-color: #c7d2fe;
+    --border-color: #e4e4e7;
+    --hover-background-color: #fef3c7;
     --hover-color: red;
-    --sidebar-width: 200px;
-}
+    --sidebar-width: 250px;
+    --input-altering-color: #d1fae5; 
+} */
+
 
 main > h1 {
     margin-left: 20px;
@@ -44,7 +48,7 @@ main > h1 {
 
 .task-item {
     padding: 10px;
-    border: 2px solid var(--border-gray);
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     max-width: calc(90vw - var(--sidebar-width));
     & h4 {
@@ -61,7 +65,7 @@ main > h1 {
 }
 
 .task-item:hover {
-    background-color: #f1f5f9;
+    background-color: var(--hover-background-color);
     cursor: pointer;
 }
 

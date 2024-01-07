@@ -1,6 +1,6 @@
 
 
-export const createStartScreen = (()=>{
+export const createModalStartScreen = (()=>{
     const body = document.querySelector('body');
 
     const createWelcomeMessage = () => {
@@ -29,9 +29,11 @@ export const createStartScreen = (()=>{
         input.name = 'username';
         input.minLength = '2';
         input.autocomplete = 'username';
+        input.placeholder = 'username';
         input.required = true;
         input.classList.add('startup-user-name');
         label.appendChild(input);
+        label.appendChild(createSpan());
         return label;
     }
 
@@ -45,9 +47,17 @@ export const createStartScreen = (()=>{
         input.minLength = '2';
         input.autocomplete = 'new-password';
         input.required = true;
+        input.placeholder = 'password';
         input.classList.add('startup-user-name');
         label.appendChild(input);
+        label.appendChild(createSpan());
         return label;
+    }
+
+    const createSpan = () => {
+        //for altering with pseudo elements
+        const span = document.createElement('span');
+        return span;
     }
 
     const createUserBtn = () => {

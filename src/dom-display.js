@@ -2,6 +2,7 @@ import { taskGridItem } from "./dom-task-items";
 import { siteStorage } from "./storage";
 import { createNewTaskPart } from "./task-parts";
 import { taskItemListeners } from "./dom-task-item-listeners";
+import { createSidebarListItem } from "./dom-sidebar";
 
 export const displayListItems = (() => {
     function showPage(listIndex = 0 ){
@@ -55,11 +56,7 @@ export function displaySidebarLists(listIndex = 0) {
     sidebarList.textContent = '';
     const lists = siteStorage.getLists();
     lists.forEach( (list, index) => {
-        const item = document.createElement('p');
-        item.textContent = list.title;
-        item.dataset.index = index;
-        if (index === listIndex) item.classList.add('current-list');
-        sidebarList.appendChild(item);
+        sidebarList.appendChild(createSidebarListItem(listIndex, list, index));
     })
 }
 

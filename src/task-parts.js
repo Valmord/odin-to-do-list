@@ -11,7 +11,6 @@ export const removeLastTaskPart = () => {
     const partsContainer = document.querySelector('.task-parts-container');
     const parts = document.querySelectorAll('.task-parts-container > div');
     const lastChild = parts[parts.length-1];
-    console.log(lastChild);
     partsContainer.removeChild(lastChild);
 }
 

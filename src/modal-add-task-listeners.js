@@ -2,6 +2,7 @@ import { displayListItems, displayNewTaskPart } from "./dom-display";
 import Task from "./task";
 import { removeLastTaskPart, resetTaskParts } from "./task-parts";
 import { siteStorage } from "./storage";
+import { loadSite } from "./load-site";
 
 export function addTaskListeners(){
     resetBtnListener();
@@ -27,11 +28,11 @@ const formSubmitListener = () => {
         document.querySelectorAll('.task-parts').forEach(part => {
             if (part.value != '') partsArray.push(part.value);
         } );
-        console.log(partsArray);
         siteStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray));
         form.reset();
         resetTaskParts();
-        displayListItems.showPage(+currentList.dataset.index);
+        loadSite.refreshPage(+currentList.dataset.index);
+        // displayListItems.showPage(+currentList.dataset.index);
     })
 }
 
@@ -43,8 +44,9 @@ const outsideFormListener = () => {
 
 const cancelBtnListener = () => {
     cancelBtn.addEventListener('click', () => {
-        form.reset(); // only child is the form.
+        form.reset();
         modal.classList.remove('modal-shown');
+        resetTaskParts();
     })
 }
 

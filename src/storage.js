@@ -18,13 +18,25 @@ export const siteStorage = (() => {
         return arrIndex;
     };
 
-    const addTask = (listIndex, todo) => {
-        storage.lists[listIndex].todos.push(todo);
+    const getLists = () => {
+        return storage.lists.map( (list, index) => ({title: list.title, index})  )
+    }
+
+    const updateList = (listIndex, newListTitle) => {
+        storage.lists[listIndex].title = newListTitle;
         saveToLocalStorage();
     }
 
-    const getLists = () => {
-        return storage.lists.map( (list, index) => ({title: list.title, index})  )
+    const deleteList = (listIndex) => {
+        storage.lists.splice(listIndex, 1);
+        saveToLocalStorage();
+    }
+
+    const addTask = (listIndex, todo) => {
+        console.dir(storage.lists[listIndex]);
+        storage.lists[listIndex].todos.push(todo);
+        console.dir(storage.lists[listIndex]);
+        saveToLocalStorage();
     }
 
     const getTasks = (index) => {
@@ -52,7 +64,7 @@ export const siteStorage = (() => {
     }
 
     return {addList, addTask, getLists, getTasks, updateTask, deleteTask,
-        setUserAccount, getUserName };
+        updateList, deleteList, setUserAccount, getUserName };
 })();
 
 
