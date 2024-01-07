@@ -1,3 +1,4 @@
+import { displayListItems } from "./dom-display";
 import Task from "./task";
 import { taskStorage } from "./task-storage";
 
@@ -17,11 +18,12 @@ const formSubmitListener = () => {
     const title = document.querySelector('#add-task-title');
     const dueDate = document.querySelector('#add-task-due-date');
     const notes = document.querySelector('#add-task-notes'); 
-    const currentList = document.querySelector('.current-list');
     form.addEventListener('submit', e => {
+        const currentList = document.querySelector('.current-list');
         e.preventDefault();
         taskStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value));
         form.reset();
+        displayListItems.showPage(currentList.dataset.index);
     })
 }
 

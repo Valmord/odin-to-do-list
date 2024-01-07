@@ -17,12 +17,13 @@
 }
 
 body {
-    display: flex;
+    display: grid;
     font-size: 1.5rem;
+    grid-template-columns: var(--sidebar-width) 1fr;
 
     & .sidebar {
+        min-height: 100vh;
         width: var(--sidebar-width);
-        height: 100vh;
         background-color: var(--sidebar-gray);
         border-right: 2px solid var(--border-gray);
     }

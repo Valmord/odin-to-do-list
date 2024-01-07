@@ -1,14 +1,16 @@
-import { populateSidebarList } from './dom-sidebar';
-import { localStore } from './local-storage';
-import { addTaskListeners } from './modal-add-task';
 import './sidebar.css';
 import './main.css';
-import Task from './task';
-import TaskList from './tasklist';
-import { taskStorage } from './task-storage';
-import { displayNoTasks, showTaskItems } from './dom-page';
+import { displayListItems, displaySidebarLists } from './dom-display';
+import { sidebarListeners } from './dom-sidebar';
 import { addListListeners } from './modal-add-list';
+import { addTaskListeners } from './modal-add-task';
 
+
+displaySidebarLists();
+sidebarListeners.init();
+displayListItems.showPage();
+addListListeners();
+addTaskListeners();
 
 
 // const list = new TodoList('Bobs Kitchen');
@@ -28,18 +30,11 @@ import { addListListeners } from './modal-add-list';
 // console.dir(taskStorage.getLists()[0].title);
 // console.log(taskStorage.getTasks(0));
 
-populateSidebarList();
-addTaskListeners();
-addListListeners();
+
 
 
 // need to rewrite this being that it will fail if no lists, but should fail if no tasks
-const currentIndex = document.querySelector('.current-list')?.dataset.index;
-if (currentIndex) {
-    showTaskItems(currentIndex);
-} else {
-    displayNoTasks();
-}
+
 
 
 // todoStorage.saveToLocalStorage();    
