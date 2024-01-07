@@ -99,7 +99,7 @@ export const taskGridItem = (function () {
         const taskContainer = createTaskContainer(index);
         taskContainer.appendChild(createTaskTitle(taskItem, index));
         taskContainer.appendChild(createTaskNotes(taskItem));
-        taskContainer.appendChild(createTaskTable(taskItem, index));
+        if (taskItem.parts.length > 0) taskContainer.appendChild(createTaskTable(taskItem, index));
         taskContainer.appendChild(createTaskFooter(taskItem));
         return taskContainer;
     }

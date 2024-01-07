@@ -9,6 +9,9 @@ export const taskItemListeners = (() => {
     const addTaskItemListener = () => {
         const taskItems = document.querySelectorAll('.task-item');
         taskItems.forEach(taskItem => {
+            const currentListIndex = +document.querySelector('.current-list').dataset.index;
+            const taskItemLength = siteStorage.getTasks(currentListIndex)[taskItem.dataset.index].parts.length;
+            if (taskItemLength === 0 ) return;
             taskItem.addEventListener('mouseenter', () => {
                 const partsTable = document.querySelector(
                     `.table-${taskItem.dataset.index}`);
@@ -38,8 +41,12 @@ export const taskItemListeners = (() => {
         const taskItems = document.querySelectorAll('.task-item');
         taskItems.forEach(item => {
             item.addEventListener('click', () => {
-                const table = document.querySelector(`.table-${item.dataset.index}`);
-                table.classList.toggle('table-shown');
+                const currentListIndex = +document.querySelector('.current-list').dataset.index;
+                const taskItemLength = siteStorage.getTasks(currentListIndex)[item.dataset.index].parts.length;
+                if (taskItemLength > 0 ) {
+                    const table = document.querySelector(`.table-${item.dataset.index}`);
+                    table.classList.toggle('table-shown');
+                }
                 item.classList.toggle('show-wrap');
             })
         })
