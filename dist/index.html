@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task List</title>
+<script defer src="bundle.js"></script></head>
+<body>
+  <nav class="sidebar">
+    <h3 class="user-profile"><img src="./images/account-box-outline.svg" alt="account image"><span></span></h3>
+    <div class="user-options">
+      <h3>Task Management</h3>
+      <p class="add-task"><img src="./images/plus-box-outline.svg" alt="add task" title="Create new task" >Add Task</p>
+      <p><img src="./images/feature-search-outline.svg" alt="search tasks">Search Tasks</p>
+      <p><img src="./images/calendar-alert.svg" alt="upcoming tasks">Upcoming Tasks</p>
+    </div>
+
+      <div class="user-lists">
+        <h3>My Tasklists <img src="./images/plus.svg" alt="new list" class="new-list" ></h3>
+        <div class="list-container"></div>
+      </div>
+  </nav>
+
+  <main>
+    <h1>Current List Title goes here</h1>
+    <div class="tasks-container">
+
+    </div>
+  </main> 
+
+
+  <div class="modal-add-task">
+    <form action="#" method="get">
+      <h1>Add task</h1>
+      <div class="radio-btns-container">
+        <input type="radio" name="priority" id="low-priority" value="low-priority" checked>
+        <label for="low-priority">Low priority</label>
+        <input type="radio" name="priority" id="medium-priority" value="medium-priority">
+        <label for="medium-priority">Medium priority</label>
+        <input type="radio" name="priority" id="high-priority" value="high-priority">
+        <label for="high-priority">High priority</label>
+      </div>
+      <label for="add-task-title">Title*</label>
+      <input type="text" name="title" id="add-task-title" maxlength="50" required>
+      <label for="add-task-due-date">Due Date</label>
+      <input type="datetime-local" name="due-date" id="add-task-due-date">
+      <label for="add-task-notes">Task notes</label>
+      <textarea name="notes" id="add-task-notes" cols="30" rows="10"></textarea>
+      <p for="objectives">Task Parts</p>
+      <div class="task-parts-container">  
+      </div>
+      <div class="add-task-btns btn-container">
+        <button type="submit" class="add-task-btn">Save task</button>
+        <button type="button" class="reset-task-btn">Clear</button>
+        <button type="button" class="cancel-task-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-add-list">
+    <form action="#" method="get">
+      <h1>New List</h1>
+      <label for="add-list-title">Title*</label>
+      <input type="text" name="title" id="add-list-title" maxlength="25"
+      placeholder="My Tasklist" required>
+      <div class="add-list-btns btn-container">
+        <button type="submit">Add List</button>
+        <button type="button" class="cancel-list-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-edit-task"></div>
+  <div class="modal-edit-list"></div>
+</body>
+</html>
