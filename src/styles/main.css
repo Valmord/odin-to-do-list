@@ -22,7 +22,7 @@ main > h1 {
 }
 
 .no-items {
-    margin: 40px 0 0 40px;
+    opacity: 0.5;
     display: flex;
     font-size: 3rem;
     & img {
