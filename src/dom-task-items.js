@@ -15,7 +15,7 @@ export const taskGridItem = (function () {
 
         if (taskItem.dueDate) {
             const taskDueDate = document.createElement('h6');
-            taskDueDate.textContent = "Due Date: " + format(taskItem.dueDate,"dd-MM-yyyy hh:mm");
+            taskDueDate.textContent = "Due Date: " + format(taskItem.dueDate,"dd-MM-yyyy");
             taskHeader.appendChild(taskDueDate);
         }
 
