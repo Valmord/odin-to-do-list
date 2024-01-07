@@ -22,13 +22,19 @@ const formSubmitListener = () => {
     const dueDate = document.querySelector('#add-task-due-date');
     const notes = document.querySelector('#add-task-notes'); 
     form.addEventListener('submit', e => {
+        const radioNodes = document.querySelectorAll('.radio-btns-container input');
+        let priority = '';
+        radioNodes.forEach(node => {
+            if (node.checked) priority = node.value;
+        })
+        console.log(priority);
         e.preventDefault();
         const currentList = document.querySelector('.current-list');
         let partsArray = [];
         document.querySelectorAll('.task-parts').forEach(part => {
             if (part.value != '') partsArray.push(part.value);
         } );
-        siteStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray));
+        siteStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray,priority));
         form.reset();
         resetTaskParts();
         loadSite.refreshPage(+currentList.dataset.index);

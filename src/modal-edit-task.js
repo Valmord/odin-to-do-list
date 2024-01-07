@@ -10,6 +10,21 @@ export const editTaskModal = (() => {
         return header;
     }
 
+    const createModalPriority = (taskItem) => {
+        const priorityOptions = ['low-priority', 'medium-priority', 'high-priority'];
+        const selectElement = document.createElement('select');
+        selectElement.classList.add('edit-task-select');
+        
+        priorityOptions.forEach( priority => {
+            const option = document.createElement('option');
+            option.textContent = priority;
+            option.value = priority;
+            if (priority === taskItem.priority) option.selected = true;
+            selectElement.appendChild(option);
+        })
+        return selectElement;
+    }
+
     const createModalDueDate = (taskItem) => {
         const label = document.createElement('label');
         label.textContent = 'Due Date:';
@@ -84,6 +99,7 @@ export const editTaskModal = (() => {
         modal.dataset.index = taskIndex;
         const form = document.createElement('form');
         form.appendChild(createModalHeader(taskItem));
+        form.appendChild(createModalPriority(taskItem));
         form.appendChild(createModalDueDate(taskItem));
         form.appendChild(createModalNotes(taskItem));
 

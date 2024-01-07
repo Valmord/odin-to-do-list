@@ -1,10 +1,11 @@
 
 export default class Task{
-    constructor(title, dueDate = Date.now(), notes = '', parts = []){
+    constructor(title, dueDate = Date.now(), notes = '', parts = [], priority){
         this.title = title;
         this.dateCreated = Date.now();
         this.dueDate = dueDate;
         this.dateEdited =  ''; // to be implemented
+        this.priority = priority;
         this.notes = notes;
         this.parts = parts;
         this.status = 'incomplete';

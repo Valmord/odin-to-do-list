@@ -1,9 +1,9 @@
 import { format } from "date-fns";
 
 export const taskGridItem = (function () {
-    const createTaskContainer = (listIndex) => {
+    const createTaskContainer = (listIndex, taskItem) => {
         const taskContainer = document.createElement('div');
-        taskContainer.classList.add(`task-item`);
+        taskContainer.classList.add(`task-item`, taskItem.priority);
         taskContainer.dataset.index = listIndex;
         return taskContainer;
     }
@@ -91,12 +91,13 @@ export const taskGridItem = (function () {
 
         const dateCreated = document.createElement('span');
         dateCreated.textContent = 'Date created: ' +format(taskItem.dateCreated, "dd-MM-yyyy");
+        dateCreated.classList.add('list-item-date-created');
         footerContainer.appendChild(dateCreated);
         return footerContainer;
     }
 
     function create(taskItem, index){
-        const taskContainer = createTaskContainer(index);
+        const taskContainer = createTaskContainer(index, taskItem);
         taskContainer.appendChild(createTaskTitle(taskItem, index));
         taskContainer.appendChild(createTaskNotes(taskItem));
         if (taskItem.parts.length > 0) taskContainer.appendChild(createTaskTable(taskItem, index));

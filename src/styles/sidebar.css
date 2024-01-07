@@ -5,18 +5,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-/* 
-:root {
-    font-size: 62.5%;
-    font-family: Roboto, sans-serif;
-    background-color: #f0f9ff;
-
-    --sidebar-color: #7c3aed;
-    --border-color: #e4e4e7;
-    --hover-color: red;
-    --sidebar-width: 250px;
-    --input-altering-color: #d1fae5; 
-} */
 
 body {
     display: grid;
@@ -58,8 +46,9 @@ body {
         cursor: pointer;
     }
 
-    & p:hover {
+    & .add-task:hover {
         color: var(--hover-color);
+        cursor: pointer;
     }
 
     & img {
@@ -92,8 +81,9 @@ body {
     }
 }
 
-.current-list {
+div p.current-list {
     font-weight: bold;
+    color: #7f1d1d;
 }
 
 .current-list::before {

@@ -10,8 +10,9 @@ const newTaskFromModal = () => {
     document.querySelectorAll('.edit-task-parts').forEach( node => {
         partsArr.push(node.value);
     });
+    const priority = document.querySelector('.edit-task-select').value;
 
-    const task = new Task(title, dueDate, notes, partsArr);
+    const task = new Task(title, dueDate, notes, partsArr, priority);
     return task;
 }
 
@@ -29,7 +30,6 @@ export const editTaskModalListener = (() => {
             modal.classList.remove('modal-shown');
         })
     }
-
 
     const cancelBtn = () => {
         const modal = document.querySelector('.modal-edit-task');
