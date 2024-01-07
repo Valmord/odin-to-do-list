@@ -1,5 +1,5 @@
 import { displayListItems, displaySidebarLists } from "./dom-display";
-import { sidebarListeners } from "./dom-sidebar";
+import { sidebarListeners } from "./dom-sidebar-listeners";
 import { taskStorage } from "./task-storage";
 import TaskList from "./tasklist";
 

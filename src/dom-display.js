@@ -1,12 +1,14 @@
 import { taskGridItem } from "./dom-task-items";
 import { taskStorage } from "./task-storage";
 import { createNewTaskPart } from "./task-parts";
+import { taskItemListeners } from "./dom-task-item-listeners";
 
 export const displayListItems = (() => {
     function showPage(listIndex = 0 ){
         if (!taskStorage.getLists().length) return;
         showListTitle(listIndex);
         showTaskItems(listIndex);
+        taskItemListeners.init();
     }
 
     function showListTitle(taskListIndex){

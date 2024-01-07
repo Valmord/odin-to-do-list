@@ -1,13 +1,14 @@
 import { localStore } from "./local-storage";
 import TaskList from "./tasklist";
 
-export const taskStorage = (function(){
+export const taskStorage = (() => {
     const loadFromLocalStorage = () => {
         return localStore.getLocalStorage();
     }
     const storage = loadFromLocalStorage();
 
     const saveToLocalStorage = () => {
+        console.log({storage});
         localStore.setLocalStorage(storage);
     }
 
@@ -30,11 +31,14 @@ export const taskStorage = (function(){
         return storage[index].todos;
     }
 
-    const checkIfAnyLists = () => {
-        
+    const updateTask = (listIndex, taskIndex, updatedTask) => {
+        console.log(storage[listIndex][taskIndex], updatedTask);
+        storage[listIndex].todos[taskIndex] = updatedTask;
+        console.log(storage[listIndex][taskIndex], updatedTask);
+        saveToLocalStorage();
     }
 
-    return {addList, addTask, getLists, getTasks};
+    return {addList, addTask, getLists, getTasks, updateTask};
 })();
 
 // let obj = {

@@ -31,12 +31,13 @@ export const localStore = (() => {
 
     const getLocalStorage = () => {
         if (!canStore) return;
-        const storage = JSON.parse(localStorage.getItem("todo-data")); 
+        const storage = JSON.parse(localStorage.getItem("todo-data"));
         return !storage ? [] : storage; // return empty array if nothing stored.
     }
 
     const setLocalStorage = (storage) => {
         if (!canStore) return;
+        console.log({storage});
         localStorage.setItem("todo-data",JSON.stringify(storage));
     }
     return { getLocalStorage, setLocalStorage};

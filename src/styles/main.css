@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    font-family: Roboto, sans-serif;
+
+    --sidebar-gray: #f1f5f9;
+    --border-gray: #e4e4e7;
+    --hover-color: red;
+    --sidebar-width: 200px;
+}
+
+main > h1 {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.no-items {
+    margin: 40px 0 0 40px;
+}
+
+.tasks-container {
+    display: grid;
+    padding: 50px;
+    gap: 20px;
+}
+
+.task-item {
+    padding: 10px;
+    border: 2px solid var(--border-gray);
+    border-radius: 10px;
+    max-width: calc(90vw - var(--sidebar-width));
+    & h4 {
+        display: grid;
+        grid-template-columns: 1fr max-content max-content;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+    & p {
+        text-wrap: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.task-item:hover {
+    background-color: #f1f5f9;
+}
+
+.task-item:hover {
+    & p {
+        text-wrap: wrap;
+    }
+}
+
+.task-item .edit-task-icon {
+    height: auto;
+    width: 20px;
+    cursor: pointer;
+    opacity: 0.1;
+}
+
+.edit-task-icon:hover {
+    opacity: 0.5;
+}
+
+.task-item-footer-container {
+    margin-top: 15px;
+    font-size: 1rem;
+    opacity: 0.3;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.task-parts-container > div {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 2px;
+    & span {
+        text-align: right;
+    }
+}
+
+.parts-list-table {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+
+table > tr > td, table > tr > th {
+    padding: 3px;
+}
+
+table > tr:nth-child(2n+1){
+    background-color: rgb(184, 184, 184, 0.1);
+}
+
+table > tr:nth-child(2n+2){
+    background-color: rgb(184, 184, 184, 0.05);
+}
+
+
+.parts-table-index-1 {
+    width: 30px;
+}
+
+.parts-table-index-3 {
+    width: 100px;
+}
+
+.parts-table-index-2 {
+    white-space: wrap;
+}
+
+.hidden {
+    display: none;
+}

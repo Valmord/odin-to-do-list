@@ -1,12 +1,16 @@
 
 export default class Task{
     constructor(title, dueDate = Date.now(), notes = '', parts = []){
-        console.log(title, dueDate, notes, parts);
         this.title = title;
+        this.dateCreated = Date.now();
         this.dueDate = dueDate;
         this.notes = notes;
         this.parts = parts;
         this.status = 'incomplete';
+    }
+
+    getPartTotal(){
+        return this.parts.length;
     }
 
     getTitle(){

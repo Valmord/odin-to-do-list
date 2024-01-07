@@ -4,6 +4,7 @@ import { displayNewTaskPart } from "./dom-display";
 
 const MAX_LIST_COUNT = 10;
 
+
 export const sidebarListeners = (() => {
     const addTaskListener = () => {
         const taskElement = document.querySelector('.add-task');

@@ -62,6 +62,8 @@ export const taskPartListeners = () => {
             if (part.value) part.classList.remove('part-empty');
             parts = document.querySelectorAll('.task-parts');   
             if (parts.length === parseInt(part.dataset.index)) {
+                document.querySelector(`.task-part-span-${part.dataset.index}`)
+                .textContent = part.dataset.index;    
                 displayNewTaskPart();
                 taskPartListeners();
             }
@@ -71,6 +73,7 @@ export const taskPartListeners = () => {
             if (part.value === '' && parseInt(part.dataset.index)+1 === parts.length) {
                 removeLastTaskPart();
                 part.classList.add('part-empty')
+                document.querySelector(`.task-part-span-${part.dataset.index}`).textContent = '';
             }
         })
     })
