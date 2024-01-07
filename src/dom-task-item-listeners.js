@@ -1,6 +1,6 @@
 import { editTaskModal } from "./modal-edit-task";
 import { editTaskModalListener } from "./modal-edit-task-listeners";
-import { taskStorage } from "./task-storage";
+import { siteStorage } from "./storage";
 
 
 
@@ -28,7 +28,7 @@ export const taskItemListeners = (() => {
             icon.addEventListener('click', () => {
                 const currentList = document.querySelector('.current-list');
                 editTaskModal.createModal(icon.dataset.index, 
-                    taskStorage.getTasks(currentList.dataset.index)[icon.dataset.index]);
+                    siteStorage.getTasks(currentList.dataset.index)[icon.dataset.index]);
                     editTaskModalListener.init();
             })
         });
@@ -45,10 +45,21 @@ export const taskItemListeners = (() => {
         })
     }
 
+    const noItemAddTaskListener = () => {
+        const noItemTaskIcon = document.querySelector('.no-items img');
+        if (noItemTaskIcon) {
+            const addTaskModal = document.querySelector('.modal-add-task');
+            noItemTaskIcon.addEventListener('click', () => {
+                addTaskModal.classList.add('modal-shown');
+            })
+        }
+    }
+
     const init = () => {
         addTaskItemListener();
         addEditTaskListeners();
         clickTaskItemListener();
+        noItemAddTaskListener();
     }
 
     return { addTaskItemListener, addEditTaskListeners, init}

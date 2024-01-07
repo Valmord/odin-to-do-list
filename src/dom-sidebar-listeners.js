@@ -1,5 +1,5 @@
 import { displayListItems } from "./dom-display";
-import { taskStorage } from "./task-storage";
+import { siteStorage } from "./storage";
 import { displayNewTaskPart } from "./dom-display";
 
 const MAX_LIST_COUNT = 10;
@@ -18,7 +18,7 @@ export const sidebarListeners = (() => {
         const newListBtn = document.querySelector('.new-list');
         const addListModal = document.querySelector('.modal-add-list');
         newListBtn.addEventListener('click', () => {
-            if (taskStorage.getLists().length > MAX_LIST_COUNT) {
+            if (siteStorage.getLists().length > MAX_LIST_COUNT) {
                 alert("Max list count exceeded, upgrade account for more options!");
                 return;
             }

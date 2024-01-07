@@ -23,6 +23,17 @@ main > h1 {
 
 .no-items {
     margin: 40px 0 0 40px;
+    display: flex;
+    font-size: 3rem;
+    & img {
+        margin-left: 10px;
+        height: 3.6rem;
+        cursor: pointer;
+    }
+
+    & img:hover {
+        opacity: 0.5;
+    }
 }
 
 .tasks-container {

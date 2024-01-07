@@ -1,7 +1,7 @@
 import { displayListItems, displayNewTaskPart } from "./dom-display";
 import Task from "./task";
 import { removeLastTaskPart, resetTaskParts } from "./task-parts";
-import { taskStorage } from "./task-storage";
+import { siteStorage } from "./storage";
 
 export function addTaskListeners(){
     resetBtnListener();
@@ -28,7 +28,7 @@ const formSubmitListener = () => {
             if (part.value != '') partsArray.push(part.value);
         } );
         console.log(partsArray);
-        taskStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray));
+        siteStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray));
         form.reset();
         resetTaskParts();
         displayListItems.showPage(+currentList.dataset.index);

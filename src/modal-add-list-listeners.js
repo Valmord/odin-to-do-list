@@ -1,6 +1,6 @@
 import { displayListItems, displaySidebarLists } from "./dom-display";
 import { sidebarListeners } from "./dom-sidebar-listeners";
-import { taskStorage } from "./task-storage";
+import { siteStorage } from "./storage";
 import TaskList from "./tasklist";
 
 
@@ -8,7 +8,7 @@ const cancelBtn = document.querySelector('.cancel-list-btn');
 const form = document.querySelector('.modal-add-list > form');
 const modal = document.querySelector('.modal-add-list');
 
-export function addListListeners(){
+export const addListListeners = () => {
         cancelBtnListener();
         formSubmitListener();
         outsideFormListener();
@@ -25,7 +25,7 @@ const formSubmitListener = () => {
     const title = document.querySelector('#add-list-title');
     form.addEventListener('submit', e => {
         e.preventDefault();
-        const newListIndex = taskStorage.addList(new TaskList(title.value));
+        const newListIndex = siteStorage.addList(new TaskList(title.value));
         modal.classList.remove('modal-shown');
         form.reset();
         

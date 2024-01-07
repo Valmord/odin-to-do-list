@@ -1,4 +1,4 @@
-import { taskStorage } from "./task-storage";
+import { siteStorage } from "./storage";
 import Task from "./task";
 import { displayListItems } from "./dom-display";
 
@@ -24,7 +24,7 @@ export const editTaskModalListener = (() => {
         deleteBtn.addEventListener('click', () => {
             const modal = document.querySelector('.modal-edit-task');
             const currentListIndex = +document.querySelector('.current-list').dataset.index;
-            taskStorage.deleteTask(currentListIndex, +modal.dataset.index);
+            siteStorage.deleteTask(currentListIndex, +modal.dataset.index);
             displayListItems.showPage(currentListIndex);
             modal.classList.remove('modal-shown');
         })
@@ -48,7 +48,7 @@ export const editTaskModalListener = (() => {
             modal.classList.remove('modal-shown');
             const currentListIndex = +document.querySelector('.current-list').dataset.index;
 
-            taskStorage.updateTask(
+            siteStorage.updateTask(
                 currentListIndex,
                 modal.dataset.index,
                 newTaskFromModal());

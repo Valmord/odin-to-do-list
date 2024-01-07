@@ -19,7 +19,8 @@
 
 
 
-.modal-add-task, .modal-add-list, .modal-edit-task {
+.modal-add-task, .modal-add-list, 
+.modal-edit-task, .modal-start-screen {
     height: 100%;
     width: 100%;
     background-color: rgb(0, 0, 0, 0.25);
@@ -58,12 +59,34 @@
         }
     }
 
-}   
-/* 
-.modal-add-list {
-    display: flex;
-} */
+}
 
+.modal-start-screen {
+    background-color: rgb(0,0,0,1);
+    padding: 10px;
+    & h1 {
+        color: white;
+        position: fixed;
+    }
+
+    & form {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        & label {
+            margin-top: 10px;
+        }
+
+        & button {
+            padding: 2px 10px;
+            margin-top: 15px;
+            width: max-content;
+            align-self: center;
+        }
+    }
+}
 
 .modal-shown {
     display: flex;
