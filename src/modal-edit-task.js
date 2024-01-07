@@ -1,3 +1,5 @@
+import { siteStorage } from "./storage";
+
 export const editTaskModal = (() => {
     const createModalHeader = (taskItem) => {
         const header = document.createElement('input');
@@ -75,6 +77,7 @@ export const editTaskModal = (() => {
         }
 
     const createModal = (taskIndex, taskItem) => {
+        const currentListIndex = document.querySelector('.current-list').dataset.index;
         const modal = document.querySelector('.modal-edit-task');
         modal.textContent = '';
         modal.classList.add('modal-shown');
@@ -83,7 +86,9 @@ export const editTaskModal = (() => {
         form.appendChild(createModalHeader(taskItem));
         form.appendChild(createModalDueDate(taskItem));
         form.appendChild(createModalNotes(taskItem));
-        form.appendChild(createModalItems(taskItem));
+
+        const partsArrayLength = siteStorage.getTasks(currentListIndex)[+taskIndex].parts.length;
+        if (partsArrayLength) form.appendChild(createModalItems(taskItem));
         form.appendChild(createModalButtons());
         modal.appendChild(form);
     }
