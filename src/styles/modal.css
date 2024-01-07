@@ -64,9 +64,6 @@
     display: flex;
 } */
 
-.hidden {
-    display: none;
-}
 
 .modal-shown {
     display: flex;

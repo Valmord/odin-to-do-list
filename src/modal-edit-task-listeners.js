@@ -18,9 +18,21 @@ const newTaskFromModal = () => {
 
 
 export const editTaskModalListener = (() => {
+    const deleteTaskBtn = () => {
+        
+        const deleteBtn = document.querySelector('.delete-task-btn');
+        deleteBtn.addEventListener('click', () => {
+            const modal = document.querySelector('.modal-edit-task');
+            const currentListIndex = +document.querySelector('.current-list').dataset.index;
+            taskStorage.deleteTask(currentListIndex, +modal.dataset.index);
+            displayListItems.showPage(currentListIndex);
+            modal.classList.remove('modal-shown');
+        })
+    }
+
+
     const cancelBtn = () => {
         const modal = document.querySelector('.modal-edit-task');
-        console.log(modal);
         const cancelBtn = document.querySelector('.edit-task-cancel-btn');
         cancelBtn.addEventListener('click', () => {
             modal.classList.remove('modal-shown');
@@ -34,17 +46,19 @@ export const editTaskModalListener = (() => {
         form.addEventListener('submit', e => {
             e.preventDefault();
             modal.classList.remove('modal-shown');
+            const currentListIndex = +document.querySelector('.current-list').dataset.index;
 
             taskStorage.updateTask(
-                document.querySelector('.current-list').dataset.index,
+                currentListIndex,
                 modal.dataset.index,
                 newTaskFromModal());
-            displayListItems.showPage();
+            displayListItems.showPage(currentListIndex);
         })
     }
 
     const init = () => {
         cancelBtn();
+        deleteTaskBtn();
         formSubmit();
     }
 

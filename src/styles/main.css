@@ -51,6 +51,11 @@ main > h1 {
 
 .task-item:hover {
     background-color: #f1f5f9;
+    cursor: pointer;
+}
+
+.show-wrap > p {
+    text-wrap: wrap;
 }
 
 .task-item:hover {
@@ -124,4 +129,8 @@ table > tr:nth-child(2n+2){
 
 .hidden {
     display: none;
+}
+
+.parts-list-table.table-shown {
+    display: table;
 }

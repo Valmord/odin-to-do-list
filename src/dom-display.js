@@ -13,7 +13,8 @@ export const displayListItems = (() => {
 
     function showListTitle(taskListIndex){
         const mainTitle = document.querySelector('main h1');
-        mainTitle.textContent = taskStorage.getLists()[taskListIndex].title;
+        mainTitle.textContent = `${taskStorage.getLists()[taskListIndex].title} (${
+        taskStorage.getTasks(taskListIndex).length} tasks)`;
     }
     
     

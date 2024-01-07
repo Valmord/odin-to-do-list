@@ -1,5 +1,3 @@
-const body = document.querySelector('body');
-
 export const editTaskModal = (() => {
     const createModalHeader = (taskItem) => {
         const header = document.createElement('input');
@@ -64,7 +62,13 @@ export const editTaskModal = (() => {
         cancelBtn.textContent = 'Cancel';
         cancelBtn.classList.add('edit-task-cancel-btn');
 
+        const deleteTaskBtn = document.createElement('button');
+        deleteTaskBtn.type = 'button';
+        deleteTaskBtn.textContent = 'Delete Task';
+        deleteTaskBtn.classList.add('delete-task-btn');
+
         btnContainer.appendChild(saveBtn);
+        btnContainer.appendChild(deleteTaskBtn);
         btnContainer.appendChild(cancelBtn);
 
         return btnContainer;
@@ -82,7 +86,6 @@ export const editTaskModal = (() => {
         form.appendChild(createModalItems(taskItem));
         form.appendChild(createModalButtons());
         modal.appendChild(form);
-        body.appendChild(modal);
     }
 
     return { createModal };

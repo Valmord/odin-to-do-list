@@ -4,6 +4,7 @@ export default class Task{
         this.title = title;
         this.dateCreated = Date.now();
         this.dueDate = dueDate;
+        this.dateEdited =  ''; // to be implemented
         this.notes = notes;
         this.parts = parts;
         this.status = 'incomplete';

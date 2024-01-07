@@ -34,9 +34,21 @@ export const taskItemListeners = (() => {
         });
     }
 
+    const clickTaskItemListener = () => {
+        const taskItems = document.querySelectorAll('.task-item');
+        taskItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const table = document.querySelector(`.table-${item.dataset.index}`);
+                table.classList.toggle('table-shown');
+                item.classList.toggle('show-wrap');
+            })
+        })
+    }
+
     const init = () => {
         addTaskItemListener();
         addEditTaskListeners();
+        clickTaskItemListener();
     }
 
     return { addTaskItemListener, addEditTaskListeners, init}

@@ -8,7 +8,6 @@ export const taskStorage = (() => {
     const storage = loadFromLocalStorage();
 
     const saveToLocalStorage = () => {
-        console.log({storage});
         localStore.setLocalStorage(storage);
     }
 
@@ -32,13 +31,17 @@ export const taskStorage = (() => {
     }
 
     const updateTask = (listIndex, taskIndex, updatedTask) => {
-        console.log(storage[listIndex][taskIndex], updatedTask);
         storage[listIndex].todos[taskIndex] = updatedTask;
-        console.log(storage[listIndex][taskIndex], updatedTask);
         saveToLocalStorage();
     }
 
-    return {addList, addTask, getLists, getTasks, updateTask};
+    const deleteTask = (listIndex, taskIndex) => {
+        const newTodos = storage[listIndex].todos.toSpliced(taskIndex, 1);
+        storage[listIndex].todos = newTodos;
+        saveToLocalStorage();
+    }
+
+    return {addList, addTask, getLists, getTasks, updateTask, deleteTask};
 })();
 
 // let obj = {
