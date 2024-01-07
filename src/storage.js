@@ -33,9 +33,7 @@ export const siteStorage = (() => {
     }
 
     const addTask = (listIndex, todo) => {
-        console.dir(storage.lists[listIndex]);
         storage.lists[listIndex].todos.push(todo);
-        console.dir(storage.lists[listIndex]);
         saveToLocalStorage();
     }
 
@@ -46,6 +44,13 @@ export const siteStorage = (() => {
     const updateTask = (listIndex, taskIndex, updatedTask) => {
         storage.lists[listIndex].todos[taskIndex] = updatedTask;
         saveToLocalStorage();
+    }
+
+    const updateTaskCompleteStatus = (listIndex, taskIndex, partIndex, completed) => {
+        const status = completed === true ? 'completed' : 'not-complete';
+        storage.lists[listIndex].todos[taskIndex].parts[partIndex].status = status;
+        saveToLocalStorage();
+        return status;
     }
 
     const deleteTask = (listIndex, taskIndex) => {
@@ -64,7 +69,7 @@ export const siteStorage = (() => {
     }
 
     return {addList, addTask, getLists, getTasks, updateTask, deleteTask,
-        updateList, deleteList, setUserAccount, getUserName };
+        updateList, deleteList, setUserAccount, getUserName, updateTaskCompleteStatus };
 })();
 
 

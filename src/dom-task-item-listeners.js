@@ -1,3 +1,4 @@
+import { alterTableStatus, updateTaskItemPartCompleteDisplay } from "./dom-task-items";
 import { editTaskModal } from "./modal-edit-task";
 import { editTaskModalListener } from "./modal-edit-task-listeners";
 import { siteStorage } from "./storage";
@@ -52,6 +53,29 @@ export const taskItemListeners = (() => {
         })
     }
 
+
+
+    const markCompletedListener = () => {
+        const items = document.querySelectorAll('.part-item-status-checkbox');
+        items.forEach( item => {
+            item.addEventListener('click', e => {
+                e.stopPropagation();
+                if (item.textContent === '☐') {
+                    item.textContent = '☑';
+                    item.classList.add('completed-part');
+                    alterTableStatus(item.dataset.itemIndex, item.dataset.index, true);
+                } else if (item.textContent === '☑') {
+                    item.textContent = '☐';
+                    item.classList.remove('completed-part');
+                    alterTableStatus(item.dataset.itemIndex, item.dataset.index, false);                    
+                }
+                const currentListIndex = +document.querySelector('.current-list').dataset.index;
+                const taskItem = siteStorage.getTasks(currentListIndex)[item.dataset.itemIndex];
+                updateTaskItemPartCompleteDisplay(taskItem);
+            })
+        })
+    }
+
     const noItemAddTaskListener = () => {
         const noItemTaskIcon = document.querySelector('.no-items img');
         if (noItemTaskIcon) {
@@ -66,6 +90,7 @@ export const taskItemListeners = (() => {
         addTaskItemListener();
         addEditTaskListeners();
         clickTaskItemListener();
+        markCompletedListener();
         noItemAddTaskListener();
     }
 

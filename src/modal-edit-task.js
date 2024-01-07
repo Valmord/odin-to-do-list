@@ -59,7 +59,7 @@ export const editTaskModal = (() => {
             partItem.type = 'text';
             partItem.name = `edit-task-part-${index}`;
             partItem.classList.add('edit-task-parts');
-            partItem.value = part;
+            partItem.value = part.value;
             list.appendChild(listItem);
         })
         return list;

@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { siteStorage } from "./storage";
 
 export const taskGridItem = (function () {
     const createTaskContainer = (listIndex, taskItem) => {
@@ -58,24 +59,36 @@ export const taskGridItem = (function () {
         })
         table.appendChild(tableRow);
 
-        taskItem.parts.forEach( (part, index) => {
-            table.appendChild(createTaskParts(part, index));
+        taskItem.parts.forEach( (part, i) => {
+            table.appendChild(createTaskParts(part, i, index));
         });
 
         return table;
         }
 
-    const createTaskParts = (part, index) => {   
+    const createTaskParts = (part, index, itemIndex) => {   
         const tableRow = document.createElement('tr');
         const partIndex = document.createElement('td');
         partIndex.textContent = index + 1;
         const partItem = document.createElement('td');
-        partItem.textContent = part;
-        const status = document.createElement('td');
-        status.textContent = 'Not complete';
+        partItem.textContent = part.value;
+        const statusContainer = document.createElement('td');
+        statusContainer.classList.add('status-container');
+        const status = document.createElement('span');
+        status.textContent = part.status;
+        status.classList.add('part-item-status', `part-${index}`);
+
+        const completed = document.createElement('span');
+        completed.textContent = part.status === 'completed' ? '☑' : '☐';
+        completed.classList.add('part-item-status-checkbox');
+        completed.dataset.index = index;
+        completed.dataset.itemIndex = itemIndex;
+
+        statusContainer.append(status);
+        statusContainer.append(completed);
         tableRow.appendChild(partIndex);
         tableRow.appendChild(partItem);
-        tableRow.appendChild(status);
+        tableRow.appendChild(statusContainer);
         return tableRow;
     }
 
@@ -85,7 +98,8 @@ export const taskGridItem = (function () {
 
         if (taskItem.parts.length){
             const taskCount = document.createElement('span');
-            taskCount.textContent = `Total parts complete: 0 of ${taskItem.parts.length}`;
+            const taskCompleteCount = getTaskItemPartCompleteCount(taskItem); 
+            taskCount.textContent = `Total parts complete: ${taskCompleteCount} of ${taskItem.parts.length}`;
             footerContainer.appendChild(taskCount);
         }
 
@@ -107,3 +121,22 @@ export const taskGridItem = (function () {
     
     return { create };
 })();
+
+
+export const alterTableStatus = (itemIndex, partIndex, completeStatus) => {
+    const partStatus = document.querySelector(`.table-${itemIndex} .part-${partIndex}`);
+    const currentListIndex = document.querySelector('.current-list').dataset.index;
+    partStatus.textContent = siteStorage.updateTaskCompleteStatus(
+                        currentListIndex, itemIndex, partIndex, completeStatus);
+}
+
+
+const getTaskItemPartCompleteCount = (taskItem) => {
+    const count = taskItem.parts.reduce( (acc, cv) => cv.status === 'completed' ? acc+=1 : 0, 0);
+    return count;
+}    
+
+export const updateTaskItemPartCompleteDisplay = (taskItem) => {
+    const span = document.querySelector('.task-item-footer-container > span');
+    span.textContent = `Total parts complete: ${getTaskItemPartCompleteCount(taskItem)} of ${taskItem.parts.length}`;
+}

@@ -7,9 +7,13 @@ export const modalEditListListeners = (() => {
         
         const deleteBtn = document.querySelector('.delete-list-btn');
         deleteBtn.addEventListener('click', () => {
-            siteStorage.deleteList(listIndex);
-            loadSite.refreshPage(0);
-            modal.classList.remove('modal-shown');
+            if (siteStorage.getLists().length === 1) {
+                alert('Cannot have less than 1 list');
+            } else {
+                siteStorage.deleteList(listIndex);
+                loadSite.refreshPage(0);
+                modal.classList.remove('modal-shown');
+            }
         })
     }
 

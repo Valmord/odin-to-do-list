@@ -32,7 +32,7 @@ const formSubmitListener = () => {
         const currentList = document.querySelector('.current-list');
         let partsArray = [];
         document.querySelectorAll('.task-parts').forEach(part => {
-            if (part.value != '') partsArray.push(part.value);
+            if (part.value != '') partsArray.push({value: part.value, status: 'not-complete'});
         } );
         siteStorage.addTask(currentList.dataset.index, new Task(title.value,dueDate.value,notes.value,partsArray,priority));
         form.reset();

@@ -118,13 +118,31 @@ table > tr:nth-child(2n+2){
     background-color: rgb(184, 184, 184, 0.05);
 }
 
+.part-item-status-checkbox {
+    margin-left: 6px;
+    color: lightgray;
+}
+
+.part-item-status-checkbox:hover {
+    color: gray;
+}
+
+.completed-part {
+    color: green;
+    opacity: 0.5;
+}
 
 .parts-table-index-1 {
     width: 30px;
 }
 
 .parts-table-index-3 {
-    width: 100px;
+    width: 120px;
+}
+
+.status-container {
+    display: grid;
+    grid-template-columns: 1fr 15px;   
 }
 
 .parts-table-index-2 {
